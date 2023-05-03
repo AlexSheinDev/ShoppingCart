@@ -4,10 +4,15 @@
       <div class="row mb-3">
         <div class="col-12">
           <button
+            type="submit"
             class="btn btn-success me-3"
             [disabled]="!recipeForm.valid"
           >Save</button>
-          <button class="btn btn-danger">Cancel</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onCancel()"
+          >Cancel</button>
         </div>
       </div>
       <div class="row mb-3">
@@ -31,7 +36,8 @@
               type="text"
               id="imgPath"
               class="form-control"
-              formControlName="imgPath"
+              formControlName="imagePath"
+              #imagePath
             />
           </div>
         </div>
@@ -39,7 +45,7 @@
       <div class="row mb-3">
         <div class="col-12">
           <img
-            src=""
+            [src]="imagePath.value"
             alt=""
             class="img-fluid"
             style="max-height: 200px; padding: 10px 0"
@@ -80,7 +86,11 @@
               />
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
-              <button class="btn btn-danger text-center">X</button>
+              <button
+                type="button"
+                class="btn btn-danger text-center"
+                (click)="onDeleteIngredient(i)"
+              >X</button>
             </div>
           </div>
         </div>
